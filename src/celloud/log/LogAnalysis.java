@@ -8,37 +8,35 @@ public class LogAnalysis {
 	/**
 	 * 日志路径
 	 */
-	public static String path = "/Users/lin/celloud3.1.2.txt";
+	public static String path = "/Users/lin/Dropbox/log/log3.1.10.txt";
 
 	/**
-	 * 日志丢弃规则
+	 * 日志保留规则
 	 */
-	public static String[] dropRegular = { "@han608github","Merge","merge" };
+	public static String[] printResular = { "update", "fixed", "fix", "add", "delete" };
 
 	public static void main(String[] args) throws IOException {
 		FileReader in = new FileReader(path);
 		LineNumberReader reader = new LineNumberReader(in);
 		String line = null;
+		int i = 0;
 		while ((line = reader.readLine()) != null) {
 			line = line.trim();
-			if (isDrop(line)) {
-				continue;
-			}
 			String l[] = line.split("\t");
-			if (l.length < 3) {
-				continue;
+			for (String string : l) {
+				if (isPrint(string)) {
+					i++;
+					// System.out.print(i + "\t");
+					System.out.println(string);
+				}
 			}
-			if (isDrop(l[2])) {
-				continue;
-			}
-			System.out.println(l[2]);
 		}
 		reader.close();
 		in.close();
 	}
 
-	private static boolean isDrop(String line) {
-		for (String string : dropRegular) {
+	private static boolean isPrint(String line) {
+		for (String string : printResular) {
 			if (line.startsWith(string))
 				return true;
 		}
