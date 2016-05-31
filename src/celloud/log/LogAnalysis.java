@@ -8,7 +8,7 @@ public class LogAnalysis {
 	/**
 	 * 日志路径
 	 */
-	public static String path = "/Users/lin/Dropbox/log/log3.1.10.txt";
+	public static String path = "/Users/lin/Dropbox/log/log3.1.13.txt";
 
 	/**
 	 * 日志保留规则
@@ -19,14 +19,11 @@ public class LogAnalysis {
 		FileReader in = new FileReader(path);
 		LineNumberReader reader = new LineNumberReader(in);
 		String line = null;
-		int i = 0;
 		while ((line = reader.readLine()) != null) {
 			line = line.trim();
 			String l[] = line.split("\t");
 			for (String string : l) {
 				if (isPrint(string)) {
-					i++;
-					// System.out.print(i + "\t");
 					System.out.println(string);
 				}
 			}
