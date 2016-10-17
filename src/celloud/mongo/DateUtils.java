@@ -7,7 +7,7 @@ import java.util.Date;
 public class DateUtils {
 
 	public static Date getDate(String time) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		Date date = null;
 		try {
 			date = sdf.parse(time);
@@ -18,7 +18,7 @@ public class DateUtils {
 	}
 
 	public static String getString(Date date) {
-		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 		return sdf.format(date);
 	}
 
