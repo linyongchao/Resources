@@ -11,7 +11,7 @@ import java.util.List;
 import utils.FileTools;
 
 public class RunZhu {
-	public static String path = "/Users/lin/Documents/git/celloud/celloud/src/main/java/com/celloud";
+	public static String path = "/Users/lin/Documents/git/celloud/backstage/src/main/java/com/celloud/backstage";
 	public static String[] folderFilter = { "model", "constants", "alipay", "jdpay" };
 	public static String[] fileFilter = { "xml" };
 	public static String result = "/Users/lin/RunZhu.txt";
@@ -27,10 +27,13 @@ public class RunZhu {
 		long start = new Date().getTime();
 		getFile(new File(path));
 		long end = new Date().getTime();
+
 		//		System.out.println(end - start);
 		//		System.out.println(FileTools.countLines(result));
-		String p = FileTools.getLimitLines(result, 1, 3000);
-		System.out.println(p);
+		//		String p = FileTools.getLimitLines(result, 1, 3000);
+		//		System.out.println(p);
+		int num = FileTools.countLines(result);
+		System.out.println(num);
 	}
 
 	public static void getFile(File path) {
