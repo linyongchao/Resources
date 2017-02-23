@@ -7,11 +7,13 @@ import java.io.IOException;
 import java.io.LineNumberReader;
 
 public class FolderFind {
-	public static String path = "/Users/lin/Documents/apache-tomcat-7.0.65/webapps/swagger-editor";
-	public static String keyword = "www.celloud.cc";
+	public static int i = 0;
+	public static String path = "/Users/lin/Documents/git/celloud/celloud/src/main/webapp/pages";
+	public static String keyword = "href";
 
 	public static void main(String[] args) {
 		find(path);
+		System.out.println(i);
 		System.out.println("over");
 	}
 
@@ -39,10 +41,13 @@ public class FolderFind {
 		String s = null;
 		String line = null;
 		try {
+			int count = 0;
 			while ((line = reader.readLine()) != null) {
-				if (!"".equals(line.trim()) && line.contains(keyword)) {
-					System.out.println(file.getAbsolutePath());
-					break;
+				count++;
+				if (!"".equals(line.trim()) && line.contains(keyword) && line.contains("{{")
+						&& (!line.contains("ng-href")) && (!line.contains("javascript:void(0)"))) {
+					System.out.println(count + "--" + file.getAbsolutePath());
+					i++;
 				}
 			}
 		} catch (IOException e) {
