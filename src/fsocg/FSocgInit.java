@@ -8,21 +8,23 @@ import utils.FileTools;
 
 public class FSocgInit {
 	public static void main(String[] args) {
-		String path = "/Users/lin/FS-ocg/Spacegen.DNA.hotspot.V2_5.bed";
+		String path = "/Users/lin/1.txt";
 		List<String> list = FileTools.filetoList(new File(path));
-		List<FSocg> data = new ArrayList<FSocg>();
+		List<FSocgDB> data = new ArrayList<FSocgDB>();
 		for (int i = 1; i < list.size(); i++) {
 			String line[] = list.get(i).split("\t");
-			FSocg fs = new FSocg();
-			fs.setChrom(line[0]);
-			fs.setPositionStr(line[1]);
-			fs.setPositionEnd(line[2]);
-			fs.setAlleleName(line[3]);
-			fs.setNum(line[4]);
-			fs.setPlus(line[5]);
-			fs.setVariant(line[6]);
-			fs.setGene(line[7]);
-			data.add(fs);
+			if (line.length == 6) {
+				FSocgDB fs = new FSocgDB();
+				fs.setGene(line[0]);
+				fs.setCosm(line[1]);
+				fs.setAaMutSyntax(line[2]);
+				fs.setCdsMutSyntax(line[3]);
+				fs.setAmpliconId(line[4]);
+				fs.setInsert(line[5]);
+				FSocgInsert.save(fs);
+				data.add(fs);
+			}
 		}
+		System.out.println(data.size());
 	}
 }

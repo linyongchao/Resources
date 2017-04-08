@@ -8,8 +8,8 @@ import java.io.LineNumberReader;
 
 public class FolderFind {
 	public static int i = 0;
-	public static String path = "/Users/lin/Documents/git/celloud/celloud/src/main/webapp/pages";
-	public static String keyword = "href";
+	public static String path = "/Users/lin/Documents/apache-tomcat-8.5.11";
+	public static String keyword = "CelLoudAPI";
 
 	public static void main(String[] args) {
 		find(path);
@@ -44,8 +44,7 @@ public class FolderFind {
 			int count = 0;
 			while ((line = reader.readLine()) != null) {
 				count++;
-				if (!"".equals(line.trim()) && line.contains(keyword) && line.contains("{{")
-						&& (!line.contains("ng-href")) && (!line.contains("javascript:void(0)"))) {
+				if (!"".equals(line.trim()) && line.contains(keyword)) {
 					System.out.println(count + "--" + file.getAbsolutePath());
 					i++;
 				}
